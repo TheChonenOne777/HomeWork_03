@@ -1,5 +1,6 @@
 package otus.homework.flowcats
 
+import kotlinx.coroutines.Dispatchers
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -14,5 +15,5 @@ class DiContainer {
 
     val service by lazy { retrofit.create(CatsService::class.java) }
 
-    val repository by lazy { CatsRepository(service) }
+    val repository by lazy { CatsRepository(service, dispatcher = Dispatchers.IO) }
 }
